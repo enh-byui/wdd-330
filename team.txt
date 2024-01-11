@@ -3,7 +3,11 @@ Team members:
 - David Aviles
 - Luis Andrade
 - Rama Bhagi
+<<<<<<< HEAD
 - Another
+=======
+- New Member
+>>>>>>> 86b573545974d0050ef32e2f86ff12a9a8f9064c
 
 Trello link:
 - https://trello.com/invite/b/bige9QZ5/ATTIab2989d15766cdd80a15610a8215abcaE8E48033/wdd-230-w2023
