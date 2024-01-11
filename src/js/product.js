@@ -10,7 +10,7 @@ function checkCart() {
   // Check if the cart is not empty. If it's not empty, then push every element in the cart into the myCart array.
   // If it is empty, do nothing
   if (localStorage.getItem('so-cart') != null && localStorage.getItem('so-cart') != '') {
-    let currentCart = JSON.parse(localStorage.getItem('so-cart'));
+    let currentCart = getLocalStorage('so-cart');
 
     currentCart.forEach(element => {
       myCart.push(element);
