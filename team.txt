@@ -1,6 +1,7 @@
 Team members:
 - Cesar Coutino
 - David Aviles
+- Jarom Mariscal
 <<<<<<< HEAD
 =======
 - Luis Andrade
