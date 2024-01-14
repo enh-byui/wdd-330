@@ -2,13 +2,9 @@ Team members:
 - Cesar Coutino
 - David Aviles
 - Jarom Mariscal
-<<<<<<< HEAD
-=======
 - Luis Andrade
 - Rama Bhagi
-- Another
-- New Member
->>>>>>> 28711d097c860a48b5038444a3ddb9b9c275839f
+- Erick Nava
 
 Trello link:
 - https://trello.com/invite/b/bige9QZ5/ATTIab2989d15766cdd80a15610a8215abcaE8E48033/wdd-230-w2023
