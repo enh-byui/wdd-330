@@ -49,7 +49,7 @@ export default class ProductDetails {
 
         document.getElementById('addToCart').addEventListener('click', this.addToCart.bind(this));
     }
-    addToCart(product) {
+    addToCart() {
         // Call checkCart function to check if the cart is empty
         checkCart();
 
