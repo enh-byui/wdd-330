@@ -2,6 +2,7 @@ import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
+  // Preventing an error when the cart is empty
   if (cartItems != null) {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
@@ -15,7 +16,7 @@ function renderCartContents() {
         })
     });
   } else {
-    document.querySelector('.product-list').innerHTML = '<p>No items added</p>';
+    document.querySelector('.product-list').innerHTML = '<p>Your shopping cart is currently empty. Explore our products and add items to your cart to start shopping!</p>';
   }
 }
 
