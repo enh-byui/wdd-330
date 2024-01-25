@@ -48,7 +48,7 @@ function removeItem(id) {
 
   const itemToRemove = cartItems.find(item => item.Id === id);
 
-  const updatedCartItems = cartItems.filter( (item) => item !== itemToRemove);
+  const updatedCartItems = cartItems.filter((item) => item !== itemToRemove);
 
   if (updatedCartItems.length === 0) {
     localStorage.clear();
