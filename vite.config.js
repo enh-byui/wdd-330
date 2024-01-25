@@ -11,9 +11,7 @@ export default defineConfig({
         main: resolve(__dirname, 'src/index.html'),
         cart: resolve(__dirname, 'src/cart/index.html'),
         product: resolve(__dirname, 'src/product_pages/index.html'),
-        headerTemplate: resolve(__dirname, 'src/public/partials/header.html'),
-        footerTemplate: resolve(__dirname, 'src/public/partials/footer.html')
-      },
+      }, 
     },
   },
 });
