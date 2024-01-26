@@ -14,8 +14,8 @@ export default class ProductData {
     // this.path = `../json/${this.category}.json`;
   }
   async getData(category) {
-    const response = await fetch(baseURL + `products/search/${category}`);
     console.log('VITE_SERVER_URL:', import.meta.env.VITE_SERVER_URL);
+    const response = await fetch(baseURL + `products/search/${category}`);
     const data = await convertToJson(response);
     return data.Result;
   }
