@@ -65,6 +65,10 @@ export async function loadHeaderFooter() {
   const headerElement = document.getElementById('main-header');
   const footerTemplate = await loadTemplate('/partials/footer.html');
   const footerElement = document.getElementById('main-footer');
+  
+  // Add console logs for debugging
+  console.log('Header template loaded:', headerTemplate);
+  console.log('Footer template loaded:', footerTemplate);
 
   // Render the header and footer
   renderWithTemplate(headerTemplate, headerElement); 
