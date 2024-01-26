@@ -62,11 +62,11 @@ export async function loadHeaderFooter() {
 
   // Grab header and footer elements out of DOM
   console.log('Attempting to load header template...');
-  const headerTemplate = await loadTemplate('/partials/header.html');
+  const headerTemplate = await loadTemplate('../partials/header.html');
   console.log('Header template loaded:', headerTemplate);
   const headerElement = document.getElementById('main-header');
   console.log('Attempting to load footer template...');
-  const footerTemplate = await loadTemplate('/partials/footer.html');
+  const footerTemplate = await loadTemplate('partials/footer.html');
   console.log('Footer template loaded:', footerTemplate);
   const footerElement = document.getElementById('main-footer');
   
@@ -74,6 +74,4 @@ export async function loadHeaderFooter() {
   // Render the header and footer
   renderWithTemplate(headerTemplate, headerElement); 
   renderWithTemplate(footerTemplate, footerElement);
-
-  
 }
