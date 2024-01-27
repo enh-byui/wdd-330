@@ -16,10 +16,11 @@ function renderCartContents() {
         .getElementById(`${item.Id}`)
         .addEventListener('click', function () {
           removeItem(item.Id);
-        })
+        });
     });
   } else {
-    document.querySelector('.product-list').innerHTML = '<p>Your shopping cart is currently empty. Explore our products and add items to your cart to start shopping!</p>';
+    document.querySelector('.product-list').innerHTML =
+      '<p>Your shopping cart is currently empty. Explore our products and add items to your cart to start shopping!</p>';
   }
 }
 
@@ -43,10 +44,10 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-function removeItem(id) { 
+function removeItem(id) {
   const cartItems = getLocalStorage('so-cart');
 
-  const itemToRemove = cartItems.find(item => item.Id === id);
+  const itemToRemove = cartItems.find((item) => item.Id === id);
 
   const updatedCartItems = cartItems.filter((item) => item !== itemToRemove);
 
@@ -56,9 +57,8 @@ function removeItem(id) {
   } else {
     setLocalStorage('so-cart', updatedCartItems);
   }
-  
+
   renderCartContents();
 }
 
 renderCartContents();
-
