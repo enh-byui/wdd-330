@@ -1,7 +1,7 @@
 import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
 function productDetailsTemplate(product) {
-    return `<section class="product-detail">
+  return `<section class="product-detail">
     <h3>${product.Brand.Name}</h3>
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
@@ -37,35 +37,50 @@ function checkCart() {
     myCart = [];
   }
 }
+function updateQuantity(id) {
+  if (myCart.length != 0) {
+    let productItem = myCart.find(item => item.Id == id);
 
+    if (productItem.quantity != null) {
+      updateCart(productItem);
+      return productItem.quantity + 1;
+    }
+  }
+  return 1;
+
+}
+function updateCart(itemToRemove) {
+  const newCart = myCart.filter(item => item !== itemToRemove);
+  myCart = newCart;
+}
 export default class ProductDetails {
-    constructor(productId, dataSource) {
-      this.productId = productId;
-      this.product = { };
-      this.dataSource = dataSource;
-    }
-    async init() {
-        this.product = await this.dataSource.findProductById(this.productId);
+  constructor(productId, dataSource) {
+    this.productId = productId;
+    this.product = {};
+    this.dataSource = dataSource;
+  }
+  async init() {
+    this.product = await this.dataSource.findProductById(this.productId);
 
-        this.renderProductDetails('main');
+    this.renderProductDetails('main');
 
-        document.getElementById('addToCart').addEventListener('click', this.addToCart.bind(this));
-    }
-    addToCart() {
-        // Call checkCart function to check if the cart is empty
-        checkCart();
+    document.getElementById('addToCart').addEventListener('click', this.addToCart.bind(this));
+  }
+  addToCart() {
+    // Call checkCart function to check if the cart is empty
+    checkCart();
+    this.product.quantity = updateQuantity(this.product.Id);
+    // Push the new product to the myCart array
+    myCart.push(this.product);
 
-        // Push the new product to the myCart array
-        myCart.push(this.product);
+    // Set the cart with the old products and the new product
+    setLocalStorage('so-cart', myCart);
 
-        // Set the cart with the old products and the new product
-        setLocalStorage('so-cart', myCart);
-
-        // Empty the myCart array again for future use
-        myCart = [];
-    }
-    renderProductDetails(selector) {
-        const element = document.querySelector(selector);
-        element.insertAdjacentHTML('afterBegin', productDetailsTemplate(this.product));
-    }
+    // Empty the myCart array again for future use
+    myCart = [];
+  }
+  renderProductDetails(selector) {
+    const element = document.querySelector(selector);
+    element.insertAdjacentHTML('afterBegin', productDetailsTemplate(this.product));
+  }
 }
