@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from './utils.mjs';
+import { getLocalStorage, setLocalStorage, calculateTotal } from './utils.mjs';
 import { loadHeaderFooter } from './utils.mjs';
 
 loadHeaderFooter();
@@ -9,7 +9,7 @@ function renderCartContents() {
   if (cartItems != null) {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
-
+    DisplayCartTotal(cartItems);
     // add event listeners to each 'remove' button of each item
     cartItems.forEach((item) => {
       document
@@ -21,6 +21,7 @@ function renderCartContents() {
   } else {
     document.querySelector('.product-list').innerHTML =
       '<p>Your shopping cart is currently empty. Explore our products and add items to your cart to start shopping!</p>';
+    HideCartTotal();
   }
 }
 
@@ -60,5 +61,16 @@ function removeItem(id) {
 
   renderCartContents();
 }
-
+function DisplayCartTotal(cartItems) {
+  let cartFooter = document
+    .querySelector('.cart-footer')
+    .classList.remove('hide');
+  let cartTotal = document.querySelector('.cart-total');
+  cartTotal.innerHTML = '';
+  let total = calculateTotal(cartItems);
+  cartTotal.innerHTML = `Total Price is: <strong>$${total}</strong>`;
+}
+function HideCartTotal() {
+  let cartFooter = document.querySelector('.cart-footer').classList.add('hide');
+}
 renderCartContents();

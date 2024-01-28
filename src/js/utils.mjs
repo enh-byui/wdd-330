@@ -24,15 +24,15 @@ export function setClick(selector, callback) {
 
 export function getParams(param) {
   const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString); 
-  
+  const urlParams = new URLSearchParams(queryString);
+
   const product = urlParams.get(param);
 
   return product;
 }
 
 export function renderListWithTemplate(templateFn, parentElement, list, position = 'afterBegin', clear = false) {
-    
+
   const htmlStrings = list.map(templateFn);
 
   if (clear) {
@@ -43,10 +43,10 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 }
 
 export function renderWithTemplate(templateFn, parentElement, data, callback) {
-    
+
   parentElement.insertAdjacentHTML('afterBegin', templateFn);
 
-  if(callback) {
+  if (callback) {
     callback(data);
   }
 }
@@ -67,6 +67,13 @@ export async function loadHeaderFooter() {
   const footerElement = document.getElementById('main-footer');
 
   // Render the header and footer
-  renderWithTemplate(headerTemplate, headerElement); 
+  renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+}
+export function calculateTotal(products) {
+  let total = 0;
+  products.forEach(element => {
+    total += element.FinalPrice;
+  });
+  return total;
 }
