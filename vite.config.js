@@ -19,9 +19,4 @@ export default defineConfig({
       }, 
     },
   },
-
-  // Access environment variables in client-side code
-  define: {
-    VITE_SERVER_URL: JSON.stringify(process.env.VITE_SERVER_URL),
-  },
 });
