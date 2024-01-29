@@ -1,8 +1,8 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
-
-    <h3>${product.Brand.Name}</h3>
+    return
+    `<h3>${product.Brand.Name}</h3>
 
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
