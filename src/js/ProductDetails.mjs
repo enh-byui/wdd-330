@@ -1,24 +1,23 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
-    return
-    `<h3>${product.Brand.Name}</h3>
-
-    <h2 class="divider">${product.NameWithoutBrand}</h2>
-    <img
-      class="divider"
-      src="${product.Images.PrimaryLarge}"
-      alt="${product.NameWithoutBrand}"
-    />
-    <p class="product-card__price">${product.FinalPrice}</p>
-    <marquee class="product-card__discount" scrollamount='15'direction='right'>🚩Discount: 20% ($${(product.FinalPrice * 0.2).toFixed(2)})🚩</marquee>
-    <p class="product__color">${product.Colors[0].ColorName}</p>
-    <p class="product__description">
-    ${product.DescriptionHtmlSimple}
-    </p>
-    <div class="product-detail__add">
-      <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
-    </div></section>`;
+    
+    return `<section class="product-detail" <h3>${product.Brand.Name}</h3>
+      <h2 class="divider">${product.NameWithoutBrand}</h2>
+      <img
+        class="divider"
+        src="${product.Images.PrimaryLarge}"
+        alt="${product.NameWithoutBrand}"
+      />
+      <p class="product-card__price">${product.FinalPrice}</p>
+      <marquee class="product-card__discount" scrollamount='15'direction='right'>🚩Discount: 20% ($${(product.FinalPrice * 0.2).toFixed(2)})🚩</marquee>
+      <p class="product__color">${product.Colors[0].ColorName}</p>
+      <p class="product__description">
+      ${product.DescriptionHtmlSimple}
+      </p>
+      <div class="product-detail__add">
+        <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+      </div></section>`;
 }
 
 
@@ -84,7 +83,9 @@ export default class ProductDetails {
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
-    element.insertAdjacentHTML('afterBegin', productDetailsTemplate(this.product));
-
+    element.insertAdjacentHTML(
+      'afterBegin', 
+      productDetailsTemplate(this.product)
+    );
   }
 }
