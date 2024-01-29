@@ -1,17 +1,17 @@
-import { getLocalStorage, setLocalStorage } from './utils.mjs';
+import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
-  return `<section class="product-detail">
+
     <h3>${product.Brand.Name}</h3>
+
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${product.Image}"
+      src="${product.Images.PrimaryLarge}"
       alt="${product.NameWithoutBrand}"
     />
     <p class="product-card__price">${product.FinalPrice}</p>
-    <marquee class="product-card__discount" scrollamount='20' direction='right'>🚩Discount: 20% ($${(product.FinalPrice * 0.2).toFixed(2)})🚩</marquee>
-
+    <marquee class="product-card__discount" scrollamount='15'direction='right'>🚩Discount: 20% ($${(product.FinalPrice * 0.2).toFixed(2)})🚩</marquee>
     <p class="product__color">${product.Colors[0].ColorName}</p>
     <p class="product__description">
     ${product.DescriptionHtmlSimple}
@@ -20,6 +20,7 @@ function productDetailsTemplate(product) {
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div></section>`;
 }
+
 
 // Create myCart variable to store an array of the elements in the cart
 let myCart = [];
@@ -53,6 +54,7 @@ function updateCart(itemToRemove) {
   const newCart = myCart.filter(item => item !== itemToRemove);
   myCart = newCart;
 }
+
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -60,6 +62,7 @@ export default class ProductDetails {
     this.dataSource = dataSource;
   }
   async init() {
+
     this.product = await this.dataSource.findProductById(this.productId);
 
     this.renderProductDetails('main');
@@ -82,5 +85,6 @@ export default class ProductDetails {
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
     element.insertAdjacentHTML('afterBegin', productDetailsTemplate(this.product));
+
   }
 }

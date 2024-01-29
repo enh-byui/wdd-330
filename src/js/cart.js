@@ -1,3 +1,4 @@
+
 import { getLocalStorage, setLocalStorage, calculateTotal } from './utils.mjs';
 import { loadHeaderFooter } from './utils.mjs';
 
@@ -74,3 +75,4 @@ function HideCartTotal() {
   let cartFooter = document.querySelector('.cart-footer').classList.add('hide');
 }
 renderCartContents();
+
