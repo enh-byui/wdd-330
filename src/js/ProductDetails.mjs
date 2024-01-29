@@ -71,9 +71,9 @@ export default class ProductDetails {
   addToCart() {
     // Call checkCart function to check if the cart is empty
     checkCart();
-    this.product.quantity = updateQuantity(this.product.Id);
     // Push the new product to the myCart array
     myCart.push(this.product);
+    this.product.quantity = updateQuantity(this.product.Id);
 
     // Set the cart with the old products and the new product
     setLocalStorage('so-cart', myCart);
