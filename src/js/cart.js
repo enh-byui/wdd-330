@@ -69,7 +69,8 @@ function DisplayCartTotal(cartItems) {
   let cartTotal = document.querySelector('.cart-total');
   cartTotal.innerHTML = '';
   let total = calculateTotal(cartItems);
-  cartTotal.innerHTML = `Total Price is: <strong>$${total}</strong>`;
+  let roundedTotal = total.toFixed(2);
+  cartTotal.innerHTML = `Total Price is: <strong>$${roundedTotal}</strong>`;
 }
 function HideCartTotal() {
   let cartFooter = document.querySelector('.cart-footer').classList.add('hide');
