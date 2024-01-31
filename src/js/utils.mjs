@@ -60,6 +60,10 @@ export async function loadHeaderFooter() {
   const footerTemplate = await loadTemplate("../public/partials/footer.html");
   const footerElement = document.querySelector("#main-footer");
 
+  let counter = getCartCount();
+
+  console.log(counter);
+
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
@@ -71,4 +75,9 @@ export function setClick(selector, callback) {
     callback();
   });
   qs(selector).addEventListener("click", callback);
+}
+
+export function getCartCount() {
+  const count = getLocalStorage("so-cart")?.length ?? 0;
+  return count;
 }
