@@ -67,5 +67,10 @@ export function calculateTotal(products) {
     total += element.quantity * element.FinalPrice;
   });
   return total;
-
 }
+
+export function getCartCount() {
+  const count = getLocalStorage("so-cart")?.length ?? 0;
+  return count;
+}
+

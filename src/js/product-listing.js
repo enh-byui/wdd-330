@@ -1,6 +1,7 @@
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 import ProductData from './ProductData.mjs';
 import ProductList from './ProductList.mjs';
+import Alert from './Alert.mjs';
 
 loadHeaderFooter();
 
@@ -19,3 +20,8 @@ if (product === '' || product === null) {
     listing.productsByName(product);
 }
 
+const listing = new ProductList(category, dataSource, element);
+listing.init();
+
+const alert = new Alert();
+alert.init();
