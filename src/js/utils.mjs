@@ -22,14 +22,9 @@ export function getParam(param) {
   return product;
 }
 
-// function to take a list of objects and a template and insert the objects as HTML into the DOM
-export function renderListWithTemplate(
-  templateFn,
-  parentElement,
-  list,
-  position = "afterbegin",
-  clear = false
-) {
+
+export function renderListWithTemplate(templateFn, parentElement, list, position = 'afterBegin', clear = false) {
+
   const htmlStrings = list.map(templateFn);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
@@ -38,10 +33,11 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-// function to take an optional object and a template and insert the objects as HTML into the DOM
-export function renderWithTemplate(template, parentElement, data, callback) {
-  parentElement.insertAdjacentHTML("afterbegin", template);
-  //if there is a callback...call it and pass data
+
+export function renderWithTemplate(templateFn, parentElement, data, callback) {
+
+  parentElement.insertAdjacentHTML('afterBegin', templateFn);
+
   if (callback) {
     callback(data);
   }
@@ -60,15 +56,16 @@ export async function loadHeaderFooter() {
   const footerTemplate = await loadTemplate("/partials/footer.html");
   const footerElement = document.querySelector("#main-footer");
 
+  // Render the header and footer
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
 
-// set a listener for both touchend and click
-export function setClick(selector, callback) {
-  qs(selector).addEventListener("touchend", (event) => {
-    event.preventDefault();
-    callback();
+export function calculateTotal(products) {
+  let total = 0;
+  products.forEach(element => {
+    total += element.quantity * element.FinalPrice;
   });
-  qs(selector).addEventListener("click", callback);
+  return total;
+
 }
