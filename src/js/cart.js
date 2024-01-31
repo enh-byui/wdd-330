@@ -1,8 +1,13 @@
 
 import { getLocalStorage, setLocalStorage, calculateTotal } from './utils.mjs';
 import { loadHeaderFooter } from './utils.mjs';
+import ShoppingCart from './ShoppingCart.mjs';
 
 loadHeaderFooter();
+
+const cart = new ShoppingCart("so-cart", ".product-list");
+
+cart.renderCartContents();
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
@@ -75,4 +80,5 @@ function DisplayCartTotal(cartItems) {
 function HideCartTotal() {
   let cartFooter = document.querySelector('.cart-footer').classList.add('hide');
 }
+
 renderCartContents();
