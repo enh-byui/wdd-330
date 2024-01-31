@@ -76,4 +76,3 @@ function HideCartTotal() {
   let cartFooter = document.querySelector('.cart-footer').classList.add('hide');
 }
 renderCartContents();
-
