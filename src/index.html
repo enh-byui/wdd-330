@@ -6,7 +6,6 @@
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/main.js" type="module"></script>
-    <script src="./js/product-search.js" type="module" defer></script>
   </head>
   <body>
     <header class="divider" id="main-header"></header>
@@ -30,6 +29,25 @@
           mission is to provide you with everything you need to do this
           comfortably at an affordable price.
         </p>
+      </section>
+      <section class="search-bar">
+        <form id="product-search">
+          <fieldset>
+            <label for="product">Product: </label>
+            <input type="text" name="product" id="product"><br>
+            <div id="category-radio">
+              <input type="radio" id="tents" name="category" value="tents" checked>
+              <label for="tents">Tents</label><br>
+              <input type="radio" id="backpacks" name="category" value="backpacks">
+              <label for="backpacks">Backpacks</label><br>
+              <input type="radio" id="sleeping-bags" name="category" value="sleeping-bags">
+              <label for="sleeping-bags">Sleeping Bags</label>
+              <input type="radio" id="hammocks" name="category" value="hammocks">
+              <label for="hammocks">Hammocks</label>
+            </div>
+          </fieldset>
+          <button id="search-btn">Search</button>
+        </form>
       </section>
       <section class="products">
         <ul class="product-grid">
@@ -70,7 +88,6 @@
             </a>
           </li>
         </ul>
-      </section>
     </main>
     <footer id="main-footer"></footer>
     

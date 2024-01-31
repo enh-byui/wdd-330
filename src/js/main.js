@@ -2,23 +2,33 @@ import { loadHeaderFooter } from './utils.mjs';
 
 loadHeaderFooter();
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Get reference to the search form and input field
-    var searchForm = document.getElementById('search');
-    var searchInput = document.getElementById('product');
-    var categoryElement = document.getElementById('mycategory');
-    var button = document.getElementById('search-button');
-    var category = categoryElement;
-    console.log(categoryElement);
+function getCategory() {
+    const category = document.getElementsByName('category');
 
-    // Attach event listener to the search form
-    button.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default form submission
-        
-        // Get the search query from the input field
-        var query = searchInput.value.trim();
-        
-        window.location.href = `product-listing/index.html?category=${category}`;
+    for (var i = 0; i < category.length; i++) {
+        if (category[i].checked) {
+            //console.log("Checked value:", category[i].value);
+            return category[i].value;
+        }
+    }
+}
 
-    });
-});
+document.addEventListener('DOMContentLoaded', function(){
+    const searchForm = document.getElementById('product-search');
+    const searchInput = document.getElementById('product');
+  
+    searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const selectedCategory = getCategory();
+        const query = searchInput.value.trim();
+        window.location.href = `product-listing/index.html?category=${selectedCategory}&product=${query}`;
+
+        // const dataSource = new ProductData();
+        
+        // const listing = new ProductList(selectedCategory, dataSource, element);
+        // listing.productsByName(query);
+
+    })
+
+})

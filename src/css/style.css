@@ -279,3 +279,39 @@ footer {
 marquee {
   background-color: red;
 }
+
+.search-bar {
+  max-width: 600px;
+  margin: auto;
+}
+
+#product-search {
+  display: flex;
+}
+
+#product-search fieldset {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#product {
+  width: 300px;
+  margin-left: 10px;
+}
+
+#category-radio {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+  padding: 10px;
+}
+
+#category-radio label {
+  font-size: .6em;
+  margin-top: 5px;
+}
+
+#search-btn {
+  font-size: 1em;
+  border-radius: 5px;
+}
