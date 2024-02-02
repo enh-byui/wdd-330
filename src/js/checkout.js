@@ -3,8 +3,16 @@ import CheckoutProcess from './CheckoutProcess.mjs';
 
 loadHeaderFooter();
 
-// Instantiate the CheckoutProcess class with the localStorage key and output selector
-const checkout = new CheckoutProcess('so-cart', '#orderSummaryContainer');
+const myCheckout = new CheckoutProcess("so-cart", ".checkout-summary");
+myCheckout.init();
 
-// Initialize the checkout process
-checkout.init();
+document
+  .querySelector("input[name='zip']")
+  .addEventListener("blur", myCheckout.calculateOrderTotal.bind(myCheckout));
+
+// listening for click on the button
+document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  myCheckout.checkout();
+});
