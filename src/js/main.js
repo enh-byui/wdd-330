@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
         const query = searchInput.value.trim();
         window.location.href = `product-listing/index.html?category=${selectedCategory}&product=${query}`;
 
-        // const dataSource = new ProductData();
+        // const dataSource = new ExternalServices();
         
         // const listing = new ProductList(selectedCategory, dataSource, element);
         // listing.productsByName(query);
