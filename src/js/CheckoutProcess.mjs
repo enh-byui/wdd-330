@@ -82,6 +82,7 @@ export default class CheckoutProcess {
 
     async checkout(form) {
         const formElement = document.forms["checkout"];
+        const orderPlacementMessage = document.getElementById('orderPlacementMessage');
 
         const json = formDataToJSON(formElement);
         // add totals, and item details
@@ -90,10 +91,19 @@ export default class CheckoutProcess {
         json.tax = this.tax;
         json.shipping = this.shipping;
         json.items = packageItems(this.list);
-        console.log(json);
+        //console.log(json);
         try {
             const res = await services.checkout(json);
-            console.log(res);
+            //console.log(res);
+            // Display the success message
+            orderPlacementMessage.innerHTML = `<p>${res.message}</p><p>Your order ID is: ${res.orderId}</p>`;
+
+            // Hide the form and order summary, but keep the rest of the content visible
+            formElement.style.display = 'none';
+            document.querySelector('.checkout-summary').style.display = 'none';
+
+            // Clear the cart from local storage
+            localStorage.removeItem('so-cart');  
         } catch (err) {
             console.log(err);
         }
