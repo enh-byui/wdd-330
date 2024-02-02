@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/checkout.js" type="module"></script>
   </head>
 
@@ -19,8 +19,48 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
-    </main>
 
+      <form id="checkout">
+        <fieldset>
+          <legend>Customer</legend>    
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required>
+    
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </fieldset>
+  
+        <fieldset>
+          <legend>Address</legend>  
+          <label for="streetAddress">Street Address:</label>
+          <input type="text" id="streetAddress" name="streetAddress" required>
+    
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" required>
+    
+          <label for="state">State:</label>
+          <input type="text" id="state" name="state" required>
+    
+          <label for="zipCode">Zip Code:</label>
+          <input type="text" id="zipCode" name="zipCode" required>
+        </fieldset>
+  
+        <fieldset>
+          <legend>Payment</legend>
+          <label for="creditCardNumber">Credit Card Number:</label>
+          <input type="text" id="creditCardNumber" name="creditCardNumber" required>
+    
+          <label for="expirationDate">Expiration Date:</label>
+          <input type="text" id="expirationDate" name="expirationDate" placeholder="MM/YYYY" required>
+    
+          <label for="securityCode">Security Code:</label>
+          <input type="text" id="securityCode" name="securityCode" required>
+        </fieldset>
+  
+        <button type="submit">Checkout</button>
+    </form>
+    </main>
+    <div id="orderSummaryContainer"></div>
     <footer id="main-footer"></footer>
   </body>
 </html>
