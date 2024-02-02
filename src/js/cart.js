@@ -68,17 +68,21 @@ function removeItem(id) {
   renderCartContents();
 }
 function DisplayCartTotal(cartItems) {
-  let cartFooter = document
-    .querySelector('.list-footer')
-    .classList.remove('hide');
+  let cartFooter = document.querySelector('.list-footer');
+  cartFooter.classList.remove('hide');
+
   let cartTotal = document.querySelector('.cart-total');
   cartTotal.innerHTML = '';
+
   let total = calculateTotal(cartItems);
   let roundedTotal = total.toFixed(2);
   cartTotal.innerHTML = `Total Price is: <strong>$${roundedTotal}</strong>`;
 }
 function HideCartTotal() {
-  let cartFooter = document.querySelector('.cart-footer').classList.add('hide');
+  let cartFooter = document.querySelector('.list-footer');
+  if (cartFooter) {
+    cartFooter.classList.add('hide');
+  }
 }
 
 renderCartContents();
