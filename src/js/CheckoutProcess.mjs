@@ -17,12 +17,6 @@ export default class CheckoutProcess {
     }
   
     calculateItemSummary() {
-      // Calculate and display the total amount of the items in the cart and the number of items.
-      //this.itemTotal = 0;
-      //for (const product of this.list) {
-      //  this.itemTotal += product.quantity * parseFloat(product.FinalPrice);
-      //}
-
       this.itemTotal = this.list.reduce((accumulator, element) => {
         return accumulator + element.quantity * element.FinalPrice;
       }, 0);
