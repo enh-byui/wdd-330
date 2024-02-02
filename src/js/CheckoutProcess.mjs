@@ -17,26 +17,21 @@ export default class CheckoutProcess {
     }
   
     calculateItemSummary() {
-      this.itemTotal = this.list.reduce((accumulator, element) => {
-        return accumulator + element.quantity * element.FinalPrice;
-      }, 0);
+      this.itemTotal = this.list.reduce((accumulator, element) => accumulator + element.quantity * element.FinalPrice, 0);
   
       // Call the method to display the item summary
       this.displayItemSummary();
     }
 
     calculateTotalItems() {
-        this.TotalItems = this.list.reduce((accumulator, element) => {
-          return accumulator + element.quantity;
-        }, 0);
-  
+        this.TotalItems = this.list.reduce((accumulator, element) => accumulator + element.quantity, 0);
         return this.TotalItems;
       }
   
     calculateOrderTotal() {
       // Calculate the shipping and tax amounts.
       // For simplicity, let's assume fixed values for shipping and tax.
-      this.shipping = 10 + (this.list.length) * 2; // $10 for shipping + 2 per item
+      this.shipping = 10 + ((this.calculateTotalItems() - 1) * 2); // $10 for shipping + 2 per item
 
       this.tax = this.itemTotal * 0.06; // 6% sales tax
   
