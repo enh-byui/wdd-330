@@ -94,9 +94,11 @@ export default class CheckoutProcess {
         //console.log(json);
         try {
             const res = await services.checkout(json);
-            //console.log(res);
+            console.log(res);
             // Display the success message
-            orderPlacementMessage.innerHTML = `<p>${res.message}</p><p>Your order ID is: ${res.orderId}</p>`;
+            //orderPlacementMessage.innerHTML = `<p>${res.message}</p><p>Your order ID is: ${res.orderId}</p>`;
+            orderPlacementMessage.className = "success-message";
+            orderPlacementMessage.innerHTML = `<p>${res.message} Successfully! Your order ID is: ${res.orderId}</p>`;
 
             // Hide the form and order summary, but keep the rest of the content visible
             formElement.style.display = 'none';
@@ -106,6 +108,8 @@ export default class CheckoutProcess {
             localStorage.removeItem('so-cart');  
         } catch (err) {
             console.log(err);
+            orderPlacementMessage.className = "error-message";
+            orderPlacementMessage.innerHTML = `<p>There was an error placing the order</p>`;
         }
     }
 }
