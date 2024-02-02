@@ -69,7 +69,7 @@ function removeItem(id) {
 }
 function DisplayCartTotal(cartItems) {
   let cartFooter = document
-    .querySelector('.cart-footer')
+    .querySelector('.list-footer')
     .classList.remove('hide');
   let cartTotal = document.querySelector('.cart-total');
   cartTotal.innerHTML = '';
