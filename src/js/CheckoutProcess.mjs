@@ -93,7 +93,6 @@ export default class CheckoutProcess {
         
         try {
           const res = await services.checkout(json);
-          
           // Clear the cart from local storage
           localStorage.removeItem('so-cart');
           location.assign("/checkout/success.html");
