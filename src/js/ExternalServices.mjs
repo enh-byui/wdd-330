@@ -17,8 +17,29 @@ export default class ExternalServices {
     // this.path = `../json/${this.category}.json`;
   }
   async getData(category) {
+    // Mapping object for category capitalization
+    const categoryMapping = {
+      'tents': 'Tents',
+      'backpacks': 'Backpacks',
+      'sleeping-bags': 'Sleeping Bags',
+      'hammocks': 'Hammocks'
+    };
+
+    // Convert category to proper capitalization
+    let categoryName = category.toLowerCase(); // Convert to lowercase for case-insensitive matching
+    categoryName = categoryMapping[categoryName] || categoryName;
+
+    // Set breadcrumb text content
+    document.getElementById("categoryLink").textContent = categoryName;
+
+
     const response = await fetch(baseURL + `products/search/${category}`);
     const data = await convertToJson(response);
+    
+    // Assuming 'data' is an array, get the number of items
+    console.log(data);
+    
+
     return data.Result;
   }
   async findProductById(id) {
