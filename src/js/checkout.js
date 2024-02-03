@@ -7,7 +7,8 @@ const myCheckout = new CheckoutProcess("so-cart", ".checkout-summary");
 myCheckout.init();
 
 document
-  .querySelector("input[name='zip']")
+  //.querySelector("input[name='zip']")
+  .querySelector("#zip")
   .addEventListener("blur", myCheckout.calculateOrderTotal.bind(myCheckout));
 
 // listening for click on the button

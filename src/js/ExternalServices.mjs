@@ -7,8 +7,6 @@ async function  convertToJson(res) {
   if (res.ok) {
     return data;
   } else {
-    //console.log("bad")
-    //throw new Error("Bad Response");
     throw { name: 'servicesError', message: data };
   }
 }
