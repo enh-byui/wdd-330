@@ -50,15 +50,21 @@ export default class CheckoutProcess {
             this.outputSelector + " #num-items"
         );
 
-        itemNumElement.innerText = this.list.length;
-        // calculate the total of all the items in the cart
+        //Calculate the total of elements in shopping cart
+        itemNumElement.innerText = this.list.reduce((sum, item) => { 
+          return sum + item.quantity 
+        }, 0);
+        //Calculate the total of all the items in the cart
         const amounts = this.list.map((item) => item.FinalPrice * item.quantity);
         this.itemTotal = amounts.reduce((sum, item) => sum + item);
         summaryElement.innerText = "$" + this.itemTotal.toFixed(2);
     }
 
     calculateOrderTotal() {
-        this.shipping = 10 + (this.list.length - 1) * 2;
+        const totalItems = this.list.reduce((sum, item) => { 
+          return sum + item.quantity
+        }, 0);
+        this.shipping = 10 + (totalItems - 1) * 2;
         this.tax = (this.itemTotal * 0.06).toFixed(2);
         this.orderTotal = (
             parseFloat(this.itemTotal) +
