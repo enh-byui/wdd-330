@@ -74,3 +74,44 @@ export function getCartCount() {
   return count;
 }
 
+export function getSummary() {
+  const items = getLocalStorage("so-cart");
+  //console.log(items);
+  return items;
+}
+
+export function calculateOrderDetails() {
+  const products = getLocalStorage("so-cart");
+  // Constants
+  const salesTaxRate = 0.06;
+  const shippingCostFirstItem = 10;
+  const shippingCostAdditionalItem = 2;
+
+  // Initialize variables for calculations
+  let subtotal = 0;
+  let shippingEstimate = 0;
+
+  // Calculate Subtotal
+  for (const product of products) {
+      subtotal += product.quantity * parseFloat(product.FinalPrice);
+  }
+
+  // Calculate Shipping Estimate
+  const totalItems = products.reduce((total, product) => total + product.quantity, 0);
+  shippingEstimate = shippingCostFirstItem + (Math.max(totalItems - 1, 0) * shippingCostAdditionalItem);
+
+  // Calculate Tax
+  const tax = subtotal * salesTaxRate;
+
+  // Calculate Order Total
+  const orderTotal = subtotal + shippingEstimate + tax;
+
+  // Return the results
+  return {
+      subtotal: subtotal.toFixed(2),
+      shippingEstimate: shippingEstimate.toFixed(2),
+      tax: tax.toFixed(2),
+      orderTotal: orderTotal.toFixed(2),
+  };
+}
+
