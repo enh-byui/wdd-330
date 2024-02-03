@@ -19,6 +19,3 @@ if (product === '' || product === null) {
     const listing = new ProductList(category, dataSource, element);
     listing.productsByName(product);
 }
-
-const alert = new Alert();
-alert.init();
