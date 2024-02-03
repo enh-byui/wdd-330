@@ -1,7 +1,7 @@
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 import ExternalServices from './ExternalServices.mjs';
 import ProductList from './ProductList.mjs';
-import Alert from './Alert.mjs';
+//import Alert from './Alert.mjs';
 
 loadHeaderFooter();
 
@@ -23,5 +23,5 @@ if (product === '' || product === null) {
 const listing = new ProductList(category, dataSource, element);
 listing.init();
 
-const alert = new Alert();
-alert.init();
+//const alert = new Alert();
+//alert.init();
