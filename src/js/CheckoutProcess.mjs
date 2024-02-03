@@ -54,7 +54,7 @@ export default class CheckoutProcess {
         // calculate the total of all the items in the cart
         const amounts = this.list.map((item) => item.FinalPrice * item.quantity);
         this.itemTotal = amounts.reduce((sum, item) => sum + item);
-        summaryElement.innerText = "$" + this.itemTotal;
+        summaryElement.innerText = "$" + this.itemTotal.toFixed(2);
     }
 
     calculateOrderTotal() {
@@ -75,7 +75,7 @@ export default class CheckoutProcess {
         const orderTotal = document.querySelector(
             this.outputSelector + " #orderTotal"
         );
-        shipping.innerText = "$" + this.shipping;
+        shipping.innerText = "$" + this.shipping.toFixed(2);
         tax.innerText = "$" + this.tax;
         orderTotal.innerText = "$" + this.orderTotal;
     }
