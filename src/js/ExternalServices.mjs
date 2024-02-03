@@ -36,8 +36,10 @@ export default class ExternalServices {
     const response = await fetch(baseURL + `products/search/${category}`);
     const data = await convertToJson(response);
     
-    // Assuming 'data' is an array, get the number of items
-    console.log(data);
+    // Items per category
+    let numberItems = data.Result.length;
+    document.getElementById("qtyItems").textContent = '(' + numberItems + ' items)';
+
     
 
     return data.Result;
