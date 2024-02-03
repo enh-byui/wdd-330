@@ -32,6 +32,7 @@ export default class ExternalServices {
     categoryName = categoryMapping[categoryName] || categoryName;
     // Set breadcrumb text content
     document.getElementById("categoryLink").textContent = categoryName;
+    //document.getElementById("categoryLinkw").textContent = categoryName;
 
 
     const response = await fetch(baseURL + `products/search/${category}`);
@@ -40,7 +41,7 @@ export default class ExternalServices {
     // Items per category for the breadcrumb
     let numberItems = data.Result.length;
     document.getElementById("qtyItems").textContent = '(' + numberItems + ' items)';
-    console.log(data.Result);
+    //console.log(data.Result);
     
 
     return data.Result;
