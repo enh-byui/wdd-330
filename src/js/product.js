@@ -29,7 +29,37 @@ async function main() {
   
     // Use 'await' inside an async function
     await product.init();
+
+    carousel();
   }
   
   // Call the async function
   main();
+
+  function carousel() {
+    const carouselImages = document.querySelectorAll('.carousel-slide img');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let counter = 0;
+
+    function showImage(index) {
+        carouselImages.forEach(img => img.style.display = 'none');
+        carouselImages[index].style.display = 'block';
+    }
+
+    function nextImage() {
+        counter = (counter + 1) % carouselImages.length;
+        showImage(counter);
+    }
+
+    function prevImage() {
+        counter = (counter - 1 + carouselImages.length) % carouselImages.length;
+        showImage(counter);
+    }
+
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+
+    // Show the first image initially
+    showImage(counter);
+  }

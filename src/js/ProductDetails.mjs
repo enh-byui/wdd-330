@@ -2,6 +2,8 @@ import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
     
+  const extraImages = product.Images.ExtraImages;
+  if (extraImages == '') {
     return `<section class="product-detail" <h3>${product.Brand.Name}</h3>
       <h2 class="divider">${product.NameWithoutBrand}</h2>
       <img
@@ -18,6 +20,39 @@ function productDetailsTemplate(product) {
       <div class="product-detail__add">
         <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
       </div></section>`;
+  } else {
+    const imageSources = extraImages.map( (image) => {
+
+      const imageElement = `<img class="divider" src="${image.Src}" alt="${product.NameWithoutBrand}"/>`;
+      return imageElement;
+    });
+
+    const imageElements = imageSources.join('\n');
+
+    return `<section class="product-detail" <h3>${product.Brand.Name}</h3>
+    <h2 class="divider">${product.NameWithoutBrand}</h2>
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img
+            class="divider"
+            src="${product.Images.PrimaryLarge}"
+            alt="${product.NameWithoutBrand}"/>
+            ${imageElements}
+        </div>
+        <button id="prevBtn">&#10094;</button>
+        <button id="nextBtn">&#10095;</button>
+    </div>
+    <p class="product-card__price">${product.FinalPrice}</p>
+    <marquee class="product-card__discount" scrollamount='15'direction='right'>🚩Discount: 20% ($${(product.FinalPrice * 0.2).toFixed(2)})🚩</marquee>
+    <p class="product__color">${product.Colors[0].ColorName}</p>
+    <p class="product__description">
+    ${product.DescriptionHtmlSimple}
+    </p>
+    <div class="product-detail__add">
+      <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+    </div></section>`;
+  };
+  
 }
 
 
@@ -63,6 +98,8 @@ export default class ProductDetails {
   async init() {
 
     this.product = await this.dataSource.findProductById(this.productId);
+
+    console.log(this.product);
 
     this.renderProductDetails('main');
 
