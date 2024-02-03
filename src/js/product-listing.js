@@ -1,19 +1,16 @@
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 import ExternalServices from './ExternalServices.mjs';
 import ProductList from './ProductList.mjs';
-//import Alert from './Alert.mjs';
+import Alert from './Alert.mjs';
 
 loadHeaderFooter();
 
 const category = getParam('category');
-const dataSource = new ExternalServices();
+const product = getParam('product');
 const element = document.querySelector('.product-list');
-//const product = getParam('product')
-const listing = new ProductList(category, dataSource, element);
 
+const dataSource = new ExternalServices();
 
-
-/*
 if (product === '' || product === null) {
     const listing = new ProductList(category, dataSource, element);
     listing.init();
@@ -22,9 +19,3 @@ if (product === '' || product === null) {
     const listing = new ProductList(category, dataSource, element);
     listing.productsByName(product);
 }
-*/
-
-listing.init();
-
-//const alert = new Alert();
-//alert.init();
