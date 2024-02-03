@@ -6,7 +6,7 @@ import Alert from './Alert.mjs';
 loadHeaderFooter();
 
 const category = getParam('category');
-const product = getParam('product')
+const product = getParam('product');
 const element = document.querySelector('.product-list');
 
 const dataSource = new ExternalServices();
@@ -19,9 +19,6 @@ if (product === '' || product === null) {
     const listing = new ProductList(category, dataSource, element);
     listing.productsByName(product);
 }
-
-const listing = new ProductList(category, dataSource, element);
-listing.init();
 
 const alert = new Alert();
 alert.init();
