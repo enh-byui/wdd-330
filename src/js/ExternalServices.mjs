@@ -18,17 +18,18 @@ export default class ExternalServices {
   }
   async getData(category) {
     // Mapping object for category capitalization
+    
     const categoryMapping = {
       'tents': 'Tents',
       'backpacks': 'Backpacks',
       'sleeping-bags': 'Sleeping Bags',
       'hammocks': 'Hammocks'
     };
+    
 
     // Convert category to proper capitalization
     let categoryName = category.toLowerCase(); // Convert to lowercase for case-insensitive matching
     categoryName = categoryMapping[categoryName] || categoryName;
-
     // Set breadcrumb text content
     document.getElementById("categoryLink").textContent = categoryName;
 
@@ -36,10 +37,10 @@ export default class ExternalServices {
     const response = await fetch(baseURL + `products/search/${category}`);
     const data = await convertToJson(response);
     
-    // Items per category
+    // Items per category for the breadcrumb
     let numberItems = data.Result.length;
     document.getElementById("qtyItems").textContent = '(' + numberItems + ' items)';
-
+    console.log(data.Result);
     
 
     return data.Result;
