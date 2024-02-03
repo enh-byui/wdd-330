@@ -133,6 +133,7 @@ export function alertMessage(message, scroll = true, duration = 3000) {
       main.removeChild(this);
     }
   });
+
   const main = document.querySelector("main");
   main.prepend(alert);
   // make sure they see the alert by scrolling to the top of the window
