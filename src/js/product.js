@@ -14,7 +14,7 @@ async function main() {
   
     // Set the category link dynamically
     const categoryLink = document.querySelector(".categoryLink");
-    console.log(categoryLink);
+    //console.log(categoryLink);
   
     if (categoryLink) {
       const anchorElement = document.createElement("a");
