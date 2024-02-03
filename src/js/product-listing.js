@@ -6,7 +6,7 @@ import Alert from './Alert.mjs';
 loadHeaderFooter();
 
 const category = getParam('category');
-const product = getParam('product')
+const product = getParam('product');
 const element = document.querySelector('.product-list');
 
 const dataSource = new ExternalServices();
