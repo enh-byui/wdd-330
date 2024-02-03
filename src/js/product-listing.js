@@ -18,10 +18,5 @@ if (product === '' || product === null) {
 } else {
     const listing = new ProductList(category, dataSource, element);
     listing.productsByName(product);
+
 }
-
-const listing = new ProductList(category, dataSource, element);
-listing.init();
-
-const alert = new Alert();
-alert.init();
