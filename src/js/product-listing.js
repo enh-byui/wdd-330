@@ -18,4 +18,5 @@ if (product === '' || product === null) {
 } else {
     const listing = new ProductList(category, dataSource, element);
     listing.productsByName(product);
+
 }
