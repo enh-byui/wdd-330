@@ -14,7 +14,7 @@ function productDetailsTemplate(product) {
         src="${product.Images.PrimaryLarge}"
         alt="${product.NameWithoutBrand}"
       />
-      <p class="product-card__price">${product.FinalPrice}</p>
+      <p class="product-card__price">$${product.FinalPrice.toFixed(2)}</p>
       <marquee class="product-card__discount" scrollamount='15'direction='right'>🚩Discount: 20% ($${(product.FinalPrice * 0.2).toFixed(2)})🚩</marquee>
       <p class="product__color">${product.Colors[0].ColorName}</p>
       <p class="product__description">
@@ -45,7 +45,7 @@ function productDetailsTemplate(product) {
         <button id="prevBtn">&#10094;</button>
         <button id="nextBtn">&#10095;</button>
     </div>
-    <p class="product-card__price">${product.FinalPrice}</p>
+    <p class="product-card__price">$${product.FinalPrice.toFixed(2)}</p>
     <marquee class="product-card__discount" scrollamount='15'direction='right'>🚩Discount: 20% ($${(product.FinalPrice * 0.2).toFixed(2)})🚩</marquee>
     <p class="product__color">${product.Colors[0].ColorName}</p>
     <p class="product__description">
