@@ -31,9 +31,9 @@ function productDetailsTemplate(product) {
       })
     : [];
 
-      const imageElements = imageSources.join('\n');
+    const imageElements = imageSources.join('\n');
 
-      return `<section class="product-detail" <h3>${product.Brand.Name}</h3>
+    return `<section class="product-detail" <h3>${product.Brand.Name}</h3>
       <h2 class="divider">${product.NameWithoutBrand}</h2>
       <div class="carousel-container">
           <div class="carousel-slide">
