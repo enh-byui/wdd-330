@@ -482,3 +482,7 @@ marquee {
 #nextBtn {
   right: 10px;
 }
+
+.product-card__price {
+  text-align: center;
+}
