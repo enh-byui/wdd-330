@@ -2,7 +2,6 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
   const screenWidth = window.innerWidth;
-  console.log(screenWidth)
   let imageSize;
 
     // Determine the appropriate image size based on screen width
