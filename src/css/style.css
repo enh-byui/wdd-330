@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -160,7 +160,7 @@ button {
   padding-left: 0;
 }
 
-.product-grid>li {
+.product-grid > li {
   width: 150px;
   /* border: 1px solid var(--light-grey); */
   padding: 0.5em;
@@ -437,7 +437,7 @@ marquee {
 }
 
 #category-radio label {
-  font-size: .6em;
+  font-size: 0.6em;
   margin-top: 5px;
 }
 
@@ -485,4 +485,55 @@ marquee {
 
 .product-card__price {
   text-align: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 60px;
+  background: white;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 30px;
+  color: black;
+}
+
+.popup {
+  width: 400px;
+  background: white;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: black;
+  visibility: hidden;
+  transition: transform 2.5s, top 0.4s;
+}
+.open-popup {
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 10px 10px rgba(10, 10, 10, 0.2);
+}
+
+.popup button {
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
