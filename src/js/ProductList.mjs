@@ -1,10 +1,23 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
+  const screenWidth = window.innerWidth;
+  console.log(screenWidth)
+  let imageSize;
+
+    // Determine the appropriate image size based on screen width
+    if (screenWidth < 600) {
+        imageSize = "PrimarySmall";
+    } else if (screenWidth < 1200) {
+        imageSize = "PrimaryMedium";
+    } else {
+        imageSize = "PrimaryLarge";
+    }
+
   return `<li class="product-card">
   <a href="/product_pages/index.html?product=${product.Id}">
   <img
-    src="${product.Images.PrimaryMedium}"
+    src="${product.Images[imageSize]}"
     alt="Image of ${product.Name}"
   />
   <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -24,7 +37,6 @@ export default class ProductList {
   async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
     const list = await this.dataSource.getData(this.category);
-    //console.log(this.category);
     // render the list
     this.renderList(list);
     //set the title to the current category
