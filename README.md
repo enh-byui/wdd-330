@@ -5,7 +5,7 @@
 Order Status Website.
 
 ## The Production Site
-https://candid-medovik-af91ff.netlify.app
+https://wdd-330-personal-site.onrender.com/
 
 ## Setup
 
