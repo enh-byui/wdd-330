@@ -1,35 +1,11 @@
-import { getLocalStorage, loadHeaderFooter } from './utils.mjs';
+import { loadHeaderFooter } from './utils.mjs';
+import OrderSearch from './Order.mjs';
 
 loadHeaderFooter();
 
-function getCategory() {
-  const category = document.getElementsByName('category');
+window.searchOrder = () => {
+  const orderId = document.getElementById('orderIdInput').value;
 
-  for (var i = 0; i < category.length; i++) {
-    if (category[i].checked) {
-      //console.log("Checked value:", category[i].value);
-      return category[i].value;
-    }
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  // Check if the current page is not the "Checkout" page
-  if (!window.location.href.includes('success.html')) {
-    const searchForm = document.getElementById('product-search');
-    const searchInput = document.getElementById('product');
-
-    searchForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const selectedCategory = getCategory();
-      const query = searchInput.value.trim();
-      window.location.href = `product-listing/index.html?category=${selectedCategory}&product=${query}`;
-
-      // const dataSource = new ExternalServices();
-
-      // const listing = new ProductList(selectedCategory, dataSource, element);
-      // listing.productsByName(query);
-    });
-  }
-});
+  const orderDetailsContainer = document.getElementById('orderDetails');
+  orderDetailsContainer.innerHTML = window.orderSearch.getOrderDetailsHTML(parseInt(orderId));
+};

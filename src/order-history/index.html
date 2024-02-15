@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orders | Order History</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/order-history.js" type="module"></script>
+</head>
+
+<body>
+  <header class="divider" id="main-header"></header>
+  <div class="container">
+    <h1>Order History</h1>
+    
+    <div>
+      <label for="clientIdInput">Enter Client ID (Existing clients 101 to 110):</label>
+      <input type="text" id="clientIdInput" placeholder="Enter client ID...">
+      <button onclick="searchClientOrders()">Search Client Orders</button>
+      <div id="clientOrders"></div>
+    </div>
+
+  </div>
+  <footer id="main-footer"></footer>
+</body>
+
+</html>
